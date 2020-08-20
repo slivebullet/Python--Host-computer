@@ -18,6 +18,7 @@ from PyQt5 import QtWidgets, QtCore
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+
 matplotlib.use("Qt5Agg")  # 声明使用QT5
 
 
