@@ -1,12 +1,18 @@
-import numpy as np
-import sys
-import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as ma
 from matplotlib.pyplot import MultipleLocator
 
+# 动态绘制波形的时候 分辨率比例 当CSV数据足够大的时候 可以保证绘图速度和分辨率
+gl_resolution = 97
+gl_board = 300
+
 
 def operate_file(file_path):
+    """
+    文件读取CSV函数 一列时间 一列函数值
+    :param file_path:   文件路径： 1.当前路径下面的文件名  2. 文件路径
+    :return:      返回两个列表 分别装着两列数据
+    """
     filename = file_path
     datas_files = []   # 从文件当中提取数据，原始列表
     x_data = []     # 时间轴数据列表
@@ -107,6 +113,7 @@ class DrawWave(object):
 
     # 生成器函数
     def generator(self):
+        global gl_resolution, gl_board
 
         while True:
             self.time_x = self.x_data[self.i_count]
@@ -114,7 +121,18 @@ class DrawWave(object):
 
             yield self.time_x, self.amplitude_y
 
-            self.i_count += 20
+            """
+            利用分辨率比例进行绘制速率和分辨率恰到好处的图
+            如果读取的数据过于冗长，则进行间隔采样绘图 不然会降低绘制图速度 
+            gl_board 以内按照CSV采样最佳 速度可以保证 300以上需要除以分辨率 来保证速度和采样精度
+            """
+
+            if len(self.x_data) > gl_board:
+                resolution = int(len(self.x_data) / gl_resolution)
+            else:
+                resolution = 1
+
+            self.i_count += resolution
 
             if self.i_count >= len(self.x_data):
                 # 执行完此处，把程序跳出绘制图像 直接进入后面的程序
