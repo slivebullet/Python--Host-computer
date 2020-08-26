@@ -13,11 +13,13 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from Dialog_LFM_CSV import Ui_Dialog_CSV
+from Dialog_LFM_NoneData import Ui_Dialog_Nonedata
 from Dialog_WARNNING_FILE import Ui_Dialog_file
 from PyQt5 import QtWidgets, QtCore
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+
 
 matplotlib.use("Qt5Agg")  # 声明使用QT5
 
@@ -238,10 +240,20 @@ class MyMainForm(QMainWindow, MainGUIWindows):
             paint.clean_lfm(aa_lfm, bb_lfm, cc_lfm, dd_lfm)
             self.flag_clean_lfm = False
 
-    @staticmethod  # 保存LFM的CSV文件 信号槽函数
-    def savecsv():
+    # 保存LFM的CSV文件 信号槽函数
+    def savecsv(self):
         file_csv = pd.DataFrame({'x_time': x_lfm_data, 'y_amplitude': y_lfm_data})
         file_csv.to_csv('LFM Singal.csv')
+
+        # 如果画布上面没有东西，则提示先绘制LFM信号才能 保存为CSV文件
+        if self.choice_string == 'clean nothing':
+            lfm_dialog3 = QDialog()
+            lfm_dialog4 = Ui_Dialog_Nonedata()
+            lfm_dialog4.setupUi(lfm_dialog3)
+            lfm_dialog3.exec_()
+
+            # 直接退出保存程序，进入主UI
+            return
 
         # 调出子窗口，提示保存成功
         lfm_dialog1 = QDialog()
