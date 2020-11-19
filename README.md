@@ -1,43 +1,25 @@
-# 							TASK说明
-
-### 文件说明
-
-1. **Dialog_LFM_CSV.py**    **LFM保存成功提示窗口.ui**
-
-​	LFM 线性调频信号窗口源代码文件，UI文件，当要将LFM信号保存为CSV文件时候，跳出窗口提示保存成功！！！！
+# UI oscilloscope made by PyQt
 
 
 
-2. **Dialog_WARNNING_FILE.py**    **选择文件警告窗口.ui**
+## Oscilloscope overview
 
-​	绘制波形的时候，没有选择相应的CSV文件，则弹出窗口提示用户选择相应的CSV文件
-
-
-
-3.  **DrawWaveForm.py**
-
-​    绘制动态波形文件，内含一个文件读取CSV函数
-
-​	
-
- 4. **MainGUIWindows.py**    **示波器坐标轴GUI.ui**
-
-    主窗口的代码，由QT Designer自动生成 。以及主窗口的UI文件
+This oscilloscope is made by PyQt. This UI oscilloscope code link is :https://github.com/slivebullet/Python--Host-computer. The UI oscilloscope can produce LFM singal and read the CSV file format.If you can provide a CSV file format,the UI oscilloscope can draw  static waveform and dynamic  waveform graph.**There are many shortcomings in this project and welcome everyone  to join this project and correct me.**
 
 
 
-5.  **main.py**
+## Instructions for use
 
-   主函数所在文件！！！！点击main.py即可运行该上位机
-
-
-
-6.  **SIN(X) 零点触发测试文件.csv**
-
-   提供的案例CSV文件，可以测试动态波形的绘制以及零点触发波形的绘制
+This UI oscilloscope written by **Python** language. This Project need many libraries,so you must download these libraries behind use this UI oscilloscope. In order to faciliate your use of this code, the following will elaborate on the steps of use.
 
 
 
-7. **编程头像.jpeg**
+- **Step1:**  git clone  *code links*.
 
-   上位机的LOGO图案
+- **Step2:** dowonload the necessary libraries.
+
+These libraries are necessary componentsfor the oscilloscope.If the source code is compilied without these libraries, it can not be passed. So if  you want to complie these source code,please download these libraries at first.
+
+- **Step3:** ensure that the Python interpreter version is installed and the version must greater than 3.0.
+
+- **Step4:** 
