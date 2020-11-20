@@ -22,4 +22,11 @@ These libraries are necessary componentsfor the oscilloscope.If the source code 
 
 - **Step3:** ensure that the Python interpreter version is installed and the version must greater than 3.0.
 
-- **Step4:** 
+- **Step4:** run the file main.py
+
+
+
+# join us
+
+This project is open source, the purpose is to get more advices from everyone. If you find some errors in my task, Please tell me.This is my email: slive1024@163.com. My README.md is too brief, if you are interested in this task, you can contace me directly.
+
